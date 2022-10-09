@@ -40,6 +40,8 @@
 }
 
 .title {
+  color: red;
+  text-shadow: 5px 0px white;
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
@@ -83,13 +85,15 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
+  visibility: visible;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: red;
+  border-color: white;
+  cursor: pointer;
 }
 
 .card h2 {
@@ -127,3 +131,11 @@
     filter: invert(1);
   }
 }
+
+
+.form {
+  width:100%;
+  padding: 10px;
+  border:2px solid white;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+ }
