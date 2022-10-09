@@ -105,6 +105,8 @@ export default function Home() {
     document.getElementById("stratTitle").textContent = "Valorant Strat Roulette"
     document.getElementById("SideText").toggleAttribute("hidden")
     document.getElementById("stratDescription").textContent = "This site will randomly choose a strat for you and your team to do in Valorant.\nTo start choose enter the names of the players on your team."
+
+    roundNumber = 0
   }
 
 
