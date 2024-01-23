@@ -119,23 +119,23 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
+.card,
+.footer {
+  border-color: #222;
+}
+
+.code {
+  background: #111;
+}
+
+.logo img {
+  filter: invert(1);
 }
 
 
 .form {
-  width:100%;
+  width: 100%;
   padding: 10px;
-  border:2px solid white;
-  box-shadow: 0 10px 10px rgba(0,0,0,0.22);
- }
+  border: 2px solid white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.22);
+}
