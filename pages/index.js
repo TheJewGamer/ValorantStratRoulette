@@ -1,19 +1,18 @@
 /*
 Author: TheJewGamer
-Date: 1/23/2024
+Date: 10/9/2022
 File: index.js
-*/
+*/ 
 
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 
-export default function Home()
-{
+export default function Home() {
 
   //vars
-  var PlayersList = []
+  var PlayersList= []
   var currentStrat
   var currentPlayer
 
@@ -24,33 +23,33 @@ export default function Home()
 
   //scripts
 
-  const SaveNames = () =>
-  {
-    //check to make sure player1Name is filled out
-    if (document.getElementById('Player1Name').value == false)
+  const SaveNames = () => {
+
+    //add names to array if not empty string
+    if(document.getElementById('Player1Name').value == false)
     {
-      alert('The Player 1 Name field must be filled out.')
+      alert('The Player 1 Name field must be filled out')
     }
     else
     {
       PlayersList.push(document.getElementById('Player1Name').value)
 
-      if (document.getElementById('Player2Name').value)
+      if(document.getElementById('Player2Name').value)
       {
         PlayersList.push(document.getElementById('Player2Name').value)
       }
 
-      if (document.getElementById('Player3Name').value)
+      if(document.getElementById('Player3Name').value)
       {
         PlayersList.push(document.getElementById('Player3Name').value)
       }
 
-      if (document.getElementById('Player4Name').value)
+      if(document.getElementById('Player4Name').value)
       {
         PlayersList.push(document.getElementById('Player4Name').value)
       }
 
-      if (document.getElementById('Player5Name').value)
+      if(document.getElementById('Player5Name').value)
       {
         PlayersList.push(document.getElementById('Player5Name').value)
       }
@@ -67,8 +66,7 @@ export default function Home()
     }
   }
 
-  const SetAttack = () =>
-  {
+  const SetAttack = () => {
     onAttack = true
     document.getElementById("AttackButton").toggleAttribute("hidden")
     document.getElementById("DefenseButton").toggleAttribute("hidden")
@@ -82,8 +80,7 @@ export default function Home()
 
   }
 
-  const SetDefense = () =>
-  {
+  const SetDefense = () => {
     onAttack = false
     document.getElementById("AttackButton").toggleAttribute("hidden")
     document.getElementById("DefenseButton").toggleAttribute("hidden")
@@ -96,29 +93,25 @@ export default function Home()
     getStrat()
   }
 
-  const Restart = () =>
-  {
+  const Restart = () => {
     document.getElementById("StratButton").toggleAttribute("hidden");
     document.getElementById("RestartButton").toggleAttribute("hidden");
 
     //show form
     //hide form
     document.getElementById("PlayerNamesForm").toggleAttribute("hidden")
-
+    
     //reset text
     document.getElementById("stratTitle").textContent = "Valorant Strat Roulette"
     document.getElementById("SideText").toggleAttribute("hidden")
     document.getElementById("stratDescription").textContent = "This site will randomly choose a strat for you and your team to do in Valorant.\nTo start choose enter the names of the players on your team."
 
-    //reset vars
-    roundNumber = 0;
-    PlayersList = [];
+    roundNumber = 0
   }
 
 
-  const getStrat = () =>
-  {
-
+  const getStrat = () => {
+    
     //get player name in case it is needed
     currentPlayer = PlayersList[Math.floor(Math.random() * PlayersList.length)]
 
@@ -150,7 +143,7 @@ export default function Home()
       ['Kill Confirmed', 'Players must call out the exact name of the player they killed before moving again'],
       ['Standard Kit', currentPlayer + ' chooses a weapon, all players must only use this weapon.'],
       ['Rules of Engagement', "Players cannot attack another player until they are attacked by said player."],
-      ['Mourning the dead', "Players must say something in remembrance when a player on their team dies."],
+      ['Morning the dead', "Players must say something in remembrance when a player on their team dies."],
       ['Luck of the Draw', "Players must have their knife out unless they are shooting."],
       ['The Pile', "Players must all buy weapons and then throw all weapons in a pile. Players then jump into the pile and must use the weapons they get for the round"],
       ['Pinging', 'Players must ping where they are moving to.'],
@@ -162,15 +155,15 @@ export default function Home()
       ['Pep Talk', 'For the first 10 seconds of the round ' + currentPlayer + ' must give a pep talk. Players must wait till the pep talk is over before moving'],
       ['Round of Applause', "Players must clap for 3 seconds after a player on your team gets a kill"]
     ]
-
-
+  
+  
     var globalStrats_Attack = [
       ['Mr.President Get Down', currentPlayer + ' is the President and must grab the spike and drop all their weapons and cannot attack. The President will pick a site and all other players must guard the president to said site so they can plant the spike. If the president dies remaning players must make a final stand at their body.'],
       ['Stand your ground', "Players cannot move once spike is planted. Players must try to plant the spike."],
       ['Rush B no stop', "Players must rush B without stopping"],
       ['Its a Dud', 'Players cannot plant the spike']
     ]
-
+  
     var globalStrats_Defense = [
       ['Eviction Notice', 'Player cannot attack until the other team plants the spike. After the spike is planted players must retake the site.'],
       ['Red Alert', "If the spike is planted players must constantly mentioned that the spike is planted"],
@@ -178,13 +171,13 @@ export default function Home()
       ['Protection Duty', currentPlayer + ' chooses a site to protect. All players must stay at this site until spike is planted.'],
       ['What key is it?', 'Players must ask what key it is to defuse the spike before they can defuse it.'],
     ]
-
+  
     //combine arrays
-    globalStrats_Attack = globalStrats_Attack.concat(globalStrats)
+    globalStrats_Attack = globalStrats_Attack.concat(globalStrats) 
     globalStrats_Defense = globalStrats_Defense.concat(globalStrats)
 
     //check what side player is on
-    if (onAttack)
+    if(onAttack)
     {
       currentStrat = globalStrats_Attack[Math.floor(Math.random() * globalStrats_Attack.length) - 1]
       document.getElementById("SideText").textContent = "On Attack"
@@ -196,20 +189,22 @@ export default function Home()
       document.getElementById("SideText").textContent = "On Defense"
     }
 
+    console.log(currentStrat)
+
     //update strat Text
     document.getElementById("stratTitle").textContent = currentStrat[0]
     document.getElementById("stratDescription").textContent = currentStrat[1]
 
     //inc round number 
-    roundNumber = roundNumber + 1;
+    roundNumber = roundNumber + 1
 
     //see if sides should be switched
-    if (roundNumber == 12)
+    if(roundNumber == 12)
     {
       //invert bool
-      onAttack = !onAttack;
+      onAttack = !onAttack
     }
-
+    
   }
 
   //html
@@ -233,19 +228,19 @@ export default function Home()
         <div id="PlayerNamesForm">
           <form>
             <label>Player 1 Name</label>
-            <input type="text" id="Player1Name" />
+            <input type="text" id="Player1Name"/>
 
             <label>Player 2 Name</label>
-            <input type="text" id="Player2Name" />
+            <input type="text" id="Player2Name"/>
 
             <label>Player 3 Name</label>
-            <input type="text" id="Player3Name" />
+            <input type="text" id="Player3Name"/>
 
             <label>Player 4 Name</label>
-            <input type="text" id="Player4Name" />
+            <input type="text" id="Player4Name"/>
 
             <label>Player 5 Name</label>
-            <input type="text" id="Player5Name" />
+            <input type="text" id="Player5Name"/>
             <button type="button" onClick={SaveNames}>Submit</button>
           </form>
         </div>
@@ -265,7 +260,7 @@ export default function Home()
 
           <a id="RestartButton" hidden onClick={Restart} className={styles.card}>
             <h2>Restart&rarr;</h2>
-            <p>Game Over? Another one?</p>
+            <p>Game Over?. Another one?</p>
           </a>
 
           <a id="StratButton" hidden onClick={getStrat} className={styles.card}>
