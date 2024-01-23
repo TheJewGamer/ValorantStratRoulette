@@ -1,6 +1,6 @@
 /*
 Author: TheJewGamer
-Date: 10/9/2022
+Date: 1/23/2024
 File: index.js
 */ 
 
@@ -106,7 +106,9 @@ export default function Home() {
     document.getElementById("SideText").toggleAttribute("hidden")
     document.getElementById("stratDescription").textContent = "This site will randomly choose a strat for you and your team to do in Valorant.\nTo start choose enter the names of the players on your team."
 
+    //reset vars
     roundNumber = 0
+    PlayersList = []
   }
 
 
@@ -143,7 +145,7 @@ export default function Home() {
       ['Kill Confirmed', 'Players must call out the exact name of the player they killed before moving again'],
       ['Standard Kit', currentPlayer + ' chooses a weapon, all players must only use this weapon.'],
       ['Rules of Engagement', "Players cannot attack another player until they are attacked by said player."],
-      ['Morning the dead', "Players must say something in remembrance when a player on their team dies."],
+      ['Mourning the dead', "Players must say something in remembrance when a player on their team dies."],
       ['Luck of the Draw', "Players must have their knife out unless they are shooting."],
       ['The Pile', "Players must all buy weapons and then throw all weapons in a pile. Players then jump into the pile and must use the weapons they get for the round"],
       ['Pinging', 'Players must ping where they are moving to.'],
